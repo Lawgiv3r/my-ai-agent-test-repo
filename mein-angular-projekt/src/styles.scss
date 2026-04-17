@@ -3,8 +3,5 @@
 @tailwind utilities;
 
 body {
-  background-color: #1b2838;
-  color: white;
+  @apply bg-steam-bg text-white;
 }
-
-/* You can add global styles to this file, and also import other style files */

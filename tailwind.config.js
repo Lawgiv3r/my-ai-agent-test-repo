@@ -5,9 +5,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'steam-darkest': '#171a21',
+        'steam-dark': '#171a21',
         'steam-bg': '#1b2838',
-        'steam-section': '#2a475e',
+        'steam-card': '#2a475e',
         'steam-blue': '#66c0f4',
         'steam-green': '#a4d007',
       }

@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
   protected readonly title = 'Sidebar';
+  isCollapsed = false;
+
+  toggleSidebar() {
+    this.isCollapsed = !this.isCollapsed;
+  }
 }

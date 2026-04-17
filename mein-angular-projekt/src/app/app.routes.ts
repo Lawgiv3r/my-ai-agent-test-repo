@@ -3,7 +3,12 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/',
     pathMatch: 'full'
   },
+  {
+    path: '**',
+    redirectTo: '/',
+    pathMatch: 'full'
+  }
 ];

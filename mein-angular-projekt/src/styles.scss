@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+@layer body {
   @apply bg-steam-bg text-white;
 }

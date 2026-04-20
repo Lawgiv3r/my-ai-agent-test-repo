@@ -1,10 +1,21 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 
 import { routes } from './app.routes';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { 
+  LucideAngularModule, 
+  Home, User, Star, Mail, Menu, X, Box, LogOut,
+  Users, TrendingUp, Activity, CreditCard, LayoutDashboard, DollarSign
+} from 'lucide-angular';
+
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes)]
+  providers: [
+    provideRouter(routes), importProvidersFrom(
+      LucideAngularModule.pick({ Home, User, Star, Mail, Menu, X, Box, LogOut,
+        Users, TrendingUp, Activity, CreditCard, LayoutDashboard, DollarSign
+       })
+    )
+  ]
 };

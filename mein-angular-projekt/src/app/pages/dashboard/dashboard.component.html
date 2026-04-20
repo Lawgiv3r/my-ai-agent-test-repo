@@ -1,0 +1,27 @@
+<div class="min-h-screen bg-slate-950 text-slate-200 p-6">
+  <header class="mb-8">
+    <h1 class="text-3xl font-bold">Dashboard</h1>
+    <p class="text-slate-400 mt-2">Übersicht über wichtige Metriken</p>
+  </header>
+
+  <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    @for (stat of stats(); track stat.title) {
+      <div class="bg-slate-800 rounded-lg p-6 shadow-lg border border-slate-700 hover:border-slate-600 transition-colors">
+        <div class="flex items-center justify-between mb-4">
+          <lucide-icon [name]="stat.icon" class="w-8 h-8 text-slate-400"></lucide-icon>
+          @if (stat.trend !== undefined) {
+            <span class="text-sm text-slate-400">
+              @if (stat.trend >= 0) {
+                ▲ {{ stat.trend }}%
+              } @else {
+                ▼ {{ -stat.trend }}%
+              }
+            </span>
+          }
+        </div>
+        <h2 class="text-slate-400 text-sm font-medium">{{ stat.title }}</h2>
+        <p class="text-3xl font-bold mt-2">{{ stat.value.toLocaleString('de-DE') }}</p>
+      </div>
+    }
+  </section>
+</div>

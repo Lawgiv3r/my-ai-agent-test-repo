@@ -1,0 +1,10 @@
+/* Dashboard Component Styles */
+/* Tailwind CSS handles most styling, this file is for additional custom styles if needed */
+
+/* Optional: Add any custom animations or transitions here */
+:host ::ng-deep {
+  .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+}

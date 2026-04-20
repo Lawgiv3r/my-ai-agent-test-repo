@@ -1,27 +1,59 @@
-<aside [class.collapsed]="isCollapsed" class="sidebar" [ngClass]="isCollapsed ? 'collapsed' : 'expanded'">
-  <div class="sidebar-header">
-    <h2 class="sidebar-title" [ngClass]="isCollapsed ? 'hidden' : 'visible'">Menu</h2>
-    <button (click)="toggleSidebar()" class="sidebar-toggle-btn" [ngClass]="isCollapsed ? 'collapsed' : 'expanded'">
-      <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 12h18"></path>
-        <path d="M3 6h18"></path>
-        <path d="M3 18h18"></path>
-      </svg>
+<aside 
+  [class]="isCollapsed() ? 'w-20' : 'w-64'" 
+  class="h-screen bg-slate-900 text-slate-300 transition-all duration-300 flex flex-col border-r border-slate-800 shadow-xl overflow-hidden">
+  
+  <div class="h-16 flex items-center border-b border-slate-800 relative">
+    <div class="w-20 shrink-0 flex justify-center items-center">
+      <button (click)="toggle()" class="p-2 hover:bg-slate-800 rounded-lg transition-all text-slate-400 hover:text-white">
+        <lucide-icon [name]="isCollapsed() ? 'Menu' : 'X'" class="w-6 h-6"></lucide-icon>
+      </button>
+    </div>
+    
+    @if (!isCollapsed()) {
+      <div class="flex items-center gap-3 animate-fade-in overflow-hidden">
+        <span class="text-white font-bold tracking-tight truncate">Mein Projekt</span>
+      </div>
+    }
+  </div>
+
+  <nav class="flex-1 py-3 space-y-2 overflow-y-auto overflow-x-hidden">
+    @for (item of menuItems; track item.route) {
+      <a 
+        [routerLink]="item.route" 
+        routerLinkActive="bg-blue-600/10 text-blue-400 border-l-4 border-blue-600" 
+        class="flex items-center h-12 hover:bg-slate-800 hover:text-white transition-all group relative overflow-hidden">
+        
+        <div class="w-20 shrink-0 flex justify-center items-center">
+          <lucide-icon [name]="item.icon" class="w-5 h-5 group-hover:scale-110 transition-transform"></lucide-icon>
+        </div>
+        
+        @if (!isCollapsed()) {
+          <span class="font-medium whitespace-nowrap animate-fade-in">{{ item.label }}</span>
+        }
+      </a>
+    }
+  </nav>
+
+  <div class="border-t border-slate-800 bg-slate-900/50">
+    <div class="flex items-center h-16 overflow-hidden">
+      <div class="w-20 shrink-0 flex justify-center items-center">
+        <img [src]="user.avatar" class="w-8 h-8 rounded-full border border-slate-700">
+      </div>
+      @if (!isCollapsed()) {
+        <div class="flex flex-col truncate animate-fade-in">
+          <span class="text-xs font-semibold text-white truncate">{{ user.name }}</span>
+          <span class="text-[10px] text-slate-500 uppercase tracking-wider">Admin</span>
+        </div>
+      }
+    </div>
+
+    <button class="w-full flex items-center h-12 text-red-400 hover:bg-red-500/10 transition-colors group">
+      <div class="w-20 shrink-0 flex justify-center items-center">
+        <lucide-icon name="LogOut" class="w-5 h-5"></lucide-icon>
+      </div>
+      @if (!isCollapsed()) {
+        <span class="font-medium animate-fade-in text-sm">Logout</span>
+      }
     </button>
   </div>
-  
-  <nav class="sidebar-nav">
-    <ul class="sidebar-nav-list">
-      <li class="sidebar-nav-item" *ngFor="let item of menuItems">
-        <a [routerLink]="item.link" class="sidebar-nav-link" [ngClass]="isCollapsed ? 'collapsed' : 'expanded'">
-          <span class="sidebar-nav-icon" [ngClass]="isCollapsed ? 'collapsed' : 'expanded'">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path [attr.d]="item.icon"></path>
-            </svg>
-          </span>
-          <span class="sidebar-nav-text" [ngClass]="isCollapsed ? 'hidden' : 'visible'">{{ item.title }}</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
 </aside>

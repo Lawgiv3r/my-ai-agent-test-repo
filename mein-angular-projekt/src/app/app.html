@@ -1,7 +1,7 @@
-<div class="app-container">
-  <app-sidebar></app-sidebar>
-  <main class="main-content">
-    <h1>{{ title() }}</h1>
-    <p>Welcome to your Angular application!</p>
+<div class="flex h-screen w-full bg-slate-950 overflow-hidden">
+  <app-sidebar class="shrink-0 h-full"></app-sidebar>
+
+  <main class="flex-1 h-full overflow-y-auto p-6">
+    <router-outlet></router-outlet>
   </main>
 </div>

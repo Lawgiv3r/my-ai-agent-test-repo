@@ -1,7 +1,8 @@
-<div class="flex h-screen w-full bg-slate-950 overflow-hidden">
-  <app-sidebar class="shrink-0 h-full"></app-sidebar>
+<main class="flex h-screen bg-gray-900">
+  <app-sidebar></app-sidebar>
+  <router-outlet></router-outlet>
+  
+  <!-- Notification Container -->
+  <div id="notification-container" class="fixed top-4 right-4 z-50 flex flex-col gap-2"></div>
+</main>
 
-  <main class="flex-1 h-full overflow-y-auto p-6">
-    <router-outlet></router-outlet>
-  </main>
-</div>

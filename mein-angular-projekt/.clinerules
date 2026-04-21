@@ -1,0 +1,6 @@
+# Angular 18 Rules
+- Use only Angular 18 standards.
+- MANDATORY: Use @if, @for, @switch (Built-in Control Flow).
+- MANDATORY: All components/directives must be 'standalone: true'.
+- MANDATORY: Use Signals for state where possible.
+- Global providers must go into 'app.config.ts'.
